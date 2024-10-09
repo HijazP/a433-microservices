@@ -40,12 +40,6 @@ jobs:
           username: hijazp
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ghcr.io/hijazp/karsajobs:latest
-
       - name: build-app-karsajobs
         id: push
         uses: docker/build-push-action@v6
@@ -53,6 +47,5 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: latest
-          labels: ghcr.io/hijazp/karsajobs:latest
+          tags: ghcr.io/hijazp/karsajobs:latest
 
